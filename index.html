@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brew & Bean — Artisan Coffee Shop</title>
+  <meta name="description" content="Cozy artisan coffee shop serving freshly roasted beans, handcrafted drinks, and warm vibes. Order now." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#top" class="brand">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
+        <span>Brew &amp; Bean</span>
+      </a>
+      <nav class="nav-actions">
+        <a href="#menu" class="btn btn-ghost hide-mobile">Menu</a>
+        <button class="btn btn-primary" id="open-cart" aria-label="Open cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="hide-mobile">Cart</span>
+          <span class="cart-badge" id="cart-badge" hidden>0</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="top" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <span class="pill">Freshly Roasted Daily</span>
+        <h1>Where every cup tells a story.</h1>
+        <p>A cozy little corner serving handcrafted coffee, warm pastries, and good conversation.</p>
+        <div class="cta-row">
+          <a href="#menu" class="btn btn-primary btn-lg">Order Now</a>
+          <a href="#features" class="btn btn-outline btn-lg">Learn more</a>
+        </div>
+      </div>
+      <div class="hero-image-wrap">
+        <div class="hero-glow"></div>
+        <img src="assets/coffee-hero.jpg" alt="A latte with beautiful art on a wooden table inside a cozy coffee shop" class="hero-image" />
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features" class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <h2>Crafted with care.</h2>
+        <p>Small details, big difference. Here's what makes us special.</p>
+      </div>
+      <div class="grid grid-4">
+        <div class="card feature">
+          <div class="feature-icon">☕</div>
+          <h3>Specialty Beans</h3>
+          <p>Single-origin beans, roasted in small batches each week.</p>
+        </div>
+        <div class="card feature">
+          <div class="feature-icon">🌿</div>
+          <h3>Organic & Fresh</h3>
+          <p>Locally sourced milk and organic syrups in every cup.</p>
+        </div>
+        <div class="card feature">
+          <div class="feature-icon">❤️</div>
+          <h3>Made with Love</h3>
+          <p>Baristas who care about your perfect morning ritual.</p>
+        </div>
+        <div class="card feature">
+          <div class="feature-icon">⏰</div>
+          <h3>Always Open Early</h3>
+          <p>Open from 6 AM, because great days start early.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu" class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Our Menu</h2>
+        <p>Pick a favorite — we'll have it ready when you arrive.</p>
+      </div>
+      <div class="grid grid-3" id="menu-grid"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section section-alt">
+    <div class="container contact-grid">
+      <div>
+        <h2>Visit us</h2>
+        <p class="muted">We'd love to brew you a cup. Stop by, call, or send a message.</p>
+        <ul class="contact-list">
+          <li><a href="https://maps.google.com/?q=12+Olive+Street" target="_blank" rel="noreferrer">📍 12 Olive Street, Downtown</a></li>
+          <li><a href="tel:+15551234567">📞 +1 (555) 123-4567</a></li>
+          <li><a href="mailto:hello@brewandbean.cafe">✉️ hello@brewandbean.cafe</a></li>
+        </ul>
+      </div>
+      <form class="card contact-form" id="contact-form">
+        <label>Name<input required name="name" /></label>
+        <label>Email<input required type="email" name="email" /></label>
+        <label>Message<textarea required name="message" rows="3"></textarea></label>
+        <button type="submit" class="btn btn-primary btn-block">Send message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Brew &amp; Bean Coffee.</p>
+      <p>Made with ☕ for coffee lovers.</p>
+    </div>
+  </footer>
+
+  <!-- CART DRAWER -->
+  <div class="overlay" id="cart-overlay" hidden>
+    <div class="overlay-bg" data-close-cart></div>
+    <aside class="drawer" role="dialog" aria-modal="true" aria-label="Shopping cart">
+      <div class="drawer-head">
+        <h3>Your Cart</h3>
+        <button class="icon-btn" data-close-cart aria-label="Close cart">✕</button>
+      </div>
+      <div class="drawer-body" id="cart-items"></div>
+      <div class="drawer-foot">
+        <div class="total-row"><span class="muted">Total</span><strong id="cart-total">$0.00</strong></div>
+        <button class="btn btn-primary btn-block" id="checkout-btn" disabled>Checkout</button>
+      </div>
+    </aside>
+  </div>
+
+  <!-- CONFIRMATION MODAL -->
+  <div class="overlay center" id="confirm-modal" hidden>
+    <div class="overlay-bg" data-close-confirm></div>
+    <div class="modal" role="dialog" aria-modal="true">
+      <div class="modal-icon">☕</div>
+      <h3>Order placed!</h3>
+      <p class="muted">Your order code is</p>
+      <p class="code" id="order-code"></p>
+      <button class="btn btn-primary btn-block" data-close-confirm>Done</button>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
